@@ -4,7 +4,7 @@
 
 This analysis compares **Local RAG v2** (what we built) against 8 established open-source projects that solve similar problems. The goal is to help you understand where we stand, what we do better, and what we sacrifice.
 
-> **TL;DR**: We built a lightweight, single-purpose tool optimized for your 8GB hardware. The competitors are more feature-rich but demand 2-4x more RAM and significantly more setup complexity. Our project is the equivalent of a sharp pocketknife — the others are Swiss Army knives.
+> **TL;DR**: A lightweight model was built, single-purpose tool optimized for your 8GB hardware. The competitors are more feature-rich but demand 2-4x more RAM and significantly more setup complexity. This project is the equivalent of a sharp pocketknife — the others are Swiss Army knives.
 
 ---
 
