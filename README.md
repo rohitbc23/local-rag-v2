@@ -73,3 +73,6 @@ ollama pull phi3:mini
 ollama pull llama3.2
 ```
 Then, update the `LLM_MODEL` variable inside `rag_engine.py` to match the new model name and restart the app.
+
+<img width="986" height="904" alt="image" src="https://github.com/user-attachments/assets/4c0fbde4-5396-4361-878b-bb633c96c779" />
+
