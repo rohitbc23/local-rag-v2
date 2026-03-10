@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+local_rag_db/
+rag_debug.log
+.env
+"local_rag_db/" 
+"local_rag_db/" 
+".env" 
+"replacements.txt" 

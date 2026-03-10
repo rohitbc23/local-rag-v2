@@ -1,0 +1,23 @@
+# Local RAG v2 — Dependencies
+#
+# WHY THESE SPECIFIC PACKAGES:
+#   streamlit          → UI framework (no HTML/JS needed)
+#   chromadb           → Embedded vector database (no server process)
+#   sentence-transformers → Embedding model loader (HuggingFace ecosystem)
+#   pymupdf            → PDF text extraction (fastest Python PDF parser)
+#   python-docx        → DOCX text extraction
+#   ollama             → Python client for Ollama local LLM server
+#
+# REMOVED from old version:
+#   traceloop-sdk      → Cloud observability (not local/open-source)
+#   cryptography       → Was a transitive dep of traceloop
+#   watchdog           → File watcher (not needed for manual indexing)
+
+streamlit>=1.30.0
+chromadb>=0.4.0
+sentence-transformers>=2.2.0
+pymupdf>=1.23.0
+python-docx>=0.8.11
+ollama>=0.1.0
+traceloop-sdk>=0.15.0
+python-dotenv>=1.0.0
