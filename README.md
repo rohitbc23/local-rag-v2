@@ -60,7 +60,7 @@ The app will open automatically in your browser at `http://localhost:8501`.
 | Issue | Solution |
 |---|---|
 | "Cannot connect to Ollama" | Make sure the Ollama app is running or execute `ollama serve` in a terminal. |
-| Slow indexing | Normal for CPU processing. Monitor the progress bar or index smaller folders first. |
+| Slow indexing | Normal for CPU processing.|
 | Out of memory / Crashing | Try closing other applications or index fewer files at a time. |
 | No search results | Try lowering the relevance threshold slider in the sidebar. |
 
@@ -73,3 +73,6 @@ ollama pull phi3:mini
 ollama pull llama3.2
 ```
 Then, update the `LLM_MODEL` variable inside `rag_engine.py` to match the new model name and restart the app.
+
+<img width="986" height="904" alt="image" src="https://github.com/user-attachments/assets/4c0fbde4-5396-4361-878b-bb633c96c779" />
+
