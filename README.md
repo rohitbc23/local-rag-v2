@@ -60,7 +60,7 @@ The app will open automatically in your browser at `http://localhost:8501`.
 | Issue | Solution |
 |---|---|
 | "Cannot connect to Ollama" | Make sure the Ollama app is running or execute `ollama serve` in a terminal. |
-| Slow indexing | Normal for CPU processing. Monitor the progress bar or index smaller folders first. |
+| Slow indexing | Normal for CPU processing.|
 | Out of memory / Crashing | Try closing other applications or index fewer files at a time. |
 | No search results | Try lowering the relevance threshold slider in the sidebar. |
 
