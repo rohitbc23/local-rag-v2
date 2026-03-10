@@ -14,11 +14,11 @@ This analysis compares **Local RAG v2** (what we built) against 8 established op
 |---|---|---|---|---|---|---|---|---|
 | **Min RAM** | **~1.3GB** | ~10GB+ | ~2GB (wrapper only) | 16GB+ | 8GB+ | 16GB+ | 8GB+ | 16GB+ |
 | **GPU Required** | ❌ No | Recommended | Optional | Recommended | Optional | Optional | Optional | Yes (for OCR) |
-| **Setup Steps** | **3** (pip, ollama pull, run) | 10+ (Poetry, cmake, config) | 5-8 (Docker or installer) | 8+ (Docker, GPU drivers) | 6+ (Docker compose) | 10+ (Docker, Postgres, Redis) | 8+ (Docker, Supabase) | 10+ (Docker, MinIO, MySQL) |
+| **Setup Steps** | **3** (pip, ollama pull, run) | 10+ (Poetry, cmake, config) | 5-8 (Docker or installer) | 8+ (Docker, GPU drivers) | 6+ (Docker compose) | 10+ (Docker, Postgres, Redis) | 8+ (Docker, pip install) | 10+ (Docker, MinIO, MySQL) |
 | **Runs on 8GB RAM** | ✅ **Yes** | ⚠️ Barely | ✅ (if using remote LLM) | ❌ No | ⚠️ Barely | ❌ No | ⚠️ Barely | ❌ No |
 | **Fully Offline** | ✅ Yes | ✅ Yes | ⚠️ Configurable | ✅ Yes | ⚠️ Configurable | ⚠️ Configurable | ⚠️ Configurable | ⚠️ Configurable |
 | **File Types** | PDF, DOCX, TXT | PDF, DOCX, TXT + more | 20+ formats | PDF (mainly) | PDF, MD, TXT, Org | 30+ formats | 15+ formats | PDF, DOCX, XLSX, PPTX |
-| **Vector DB** | ChromaDB (embedded) | Qdrant/Chroma/PGVector | LanceDB/Chroma/Pinecone | ChromaDB | PostgreSQL (pgvector) | Vespa | PGVector | Elasticsearch |
+| **Vector DB** | ChromaDB (embedded) | Qdrant/Chroma/PGVector | LanceDB/Chroma/Pinecone | **LanceDB** | PostgreSQL (pgvector) | Vespa | PGVector / Faiss | Elasticsearch / Infinity |
 | **LLM Integration** | Ollama (qwen2:1.5b) | Ollama/LlamaCPP/OpenAI | Ollama/LMStudio/OpenAI | Ollama/LlamaCPP | Ollama/OpenAI/Groq | Any LLM (API-based) | Ollama/OpenAI | Ollama/OpenAI/Custom |
 | **UI** | Streamlit (web) | Gradio (web) | Custom desktop/web app | Streamlit (web) | React web app | React web app | React web app | React web app |
 | **Folder Selection** | ✅ Checkbox picker | ❌ Upload only | ✅ Upload/drag-drop | ❌ CLI config | ❌ Upload + integrations | ✅ Connectors | ✅ Upload | ✅ Upload |
@@ -26,8 +26,8 @@ This analysis compares **Local RAG v2** (what we built) against 8 established op
 | **Hybrid Search** | ❌ Semantic only | ❌ Semantic only | ❌ Semantic only | ✅ Dense + keyword | ❌ Semantic only | ✅ Semantic + keyword | ⚠️ Basic | ✅ Semantic + keyword |
 | **Chat Memory** | ❌ No | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | **Multi-user** | ❌ No | ❌ No | ✅ Yes | ❌ No | ✅ Yes | ✅ Yes (RBAC) | ✅ Yes | ✅ Yes |
-| **API Available** | ❌ No | ✅ FastAPI | ✅ REST API | ❌ No | ✅ REST API | ✅ REST API | ✅ REST API | ✅ REST API |
-| **License** | All Apache/MIT | Apache 2.0 | MIT | Apache 2.0 | AGPL-3.0 | MIT/AGPL | Apache 2.0 | Apache 2.0 |
+| **API Available** | ❌ No | ✅ FastAPI | ✅ REST API | **✅ Yes** | ✅ REST API | ✅ REST API | ✅ REST API | ✅ REST API |
+| **License** | All Apache/MIT | Apache 2.0 | MIT | Apache 2.0 | AGPL-3.0 | **MIT (CE)** | Apache 2.0 | Apache 2.0 |
 | **GitHub Stars** | N/A (custom) | ~57K | ~56K | ~22K | ~33K | ~17K | ~39K | ~74K |
 | **Codebase Size** | **~600 lines** | ~15K lines | ~50K+ lines | ~5K lines | ~20K lines | ~100K+ lines | ~30K+ lines | ~50K+ lines |
 
@@ -74,7 +74,7 @@ This analysis compares **Local RAG v2** (what we built) against 8 established op
 | ✅ Smart router (decides RAG vs direct LLM) | ❌ GPU strongly recommended |
 | ✅ Answer verification and context pruning | ❌ Primarily supports PDF only |
 | ✅ Two GUI options | ❌ Docker-based setup |
-| ✅ Closest to our project in scope | ❌ Occasional formatting bugs reported |
+| ✅ REST API for building RAG applications | ❌ Occasional formatting bugs reported |
 
 **Best for:** Users with powerful hardware who want the most accurate local RAG retrieval.
 
@@ -96,11 +96,11 @@ This analysis compares **Local RAG v2** (what we built) against 8 established op
 ---
 
 ### 5. Danswer (now Onyx)
-**What it is:** An enterprise-grade AI assistant with 30+ data source connectors (Slack, Confluence, Google Drive, etc.).
+**What it is:** An enterprise-grade AI assistant with 40+ data source connectors (Slack, Confluence, Google Drive, etc.).
 
 | Pros | Cons |
 |---|---|
-| ✅ 30+ connectors (Slack, Drive, SharePoint) | ❌ 16GB+ RAM, Docker, Postgres, Redis |
+| ✅ 40+ connectors (Slack, Drive, SharePoint) | ❌ 16GB+ RAM, Docker, Postgres, Redis |
 | ✅ Hybrid search out-of-the-box | ❌ Enterprise complexity |
 | ✅ Role-based access control (RBAC) | ❌ Not designed for local file search |
 | ✅ Multi-pass indexing for accuracy | ❌ Heavy infrastructure (Vespa, Celery) |
@@ -111,17 +111,17 @@ This analysis compares **Local RAG v2** (what we built) against 8 established op
 ---
 
 ### 6. Quivr
-**What it is:** An open-source "second brain" platform with customizable AI assistants ("Brains").
+**What it is:** An open-source RAG framework designed for developers integrating GenAI into their own applications, rather than an end-user app.
 
 | Pros | Cons |
 |---|---|
-| ✅ Custom "Brains" — train AI on specific topics | ❌ Requires Supabase + Docker |
-| ✅ Clean, modern React UI | ❌ Complex self-hosting |
-| ✅ 15+ file format support | ❌ 8GB+ RAM needed |
-| ✅ API access for integrations | ❌ Cloud-first design (self-hosting is secondary) |
-| ✅ Active community (~39K stars) | ❌ Frequent breaking changes reported |
+| ✅ Clean developer-focused library (pip install) | ❌ No longer a polished end-user UI |
+| ✅ Supports PGVector and Faiss backends | ❌ Requires more developer effort to deploy |
+| ✅ API access for integrations | ❌ Product has pivoted significantly — older tutorials are outdated |
+| ✅ Actively maintained (~39K stars) | ❌ Less suited for non-technical users |
+| ✅ Apache 2.0 license | ❌ "Second brain" / Brains feature from older versions is gone |
 
-**Best for:** Users wanting a personal ChatGPT-like experience with their own documents.
+**Best for:** Developers who want an opinionated RAG library to embed into their own apps.
 
 ---
 
@@ -161,7 +161,7 @@ This analysis compares **Local RAG v2** (what we built) against 8 established op
 | **No hybrid search** (semantic only) | LocalGPT, RAGFlow, Danswer have semantic + keyword |
 | **No chat memory** (each query is independent) | All competitors support conversation history |
 | **Limited file types** (PDF, DOCX, TXT) | AnythingLLM (20+), Danswer (30+), RAGFlow (tables) |
-| **No API** (UI-only access) | PrivateGPT, AnythingLLM, Khoj expose REST APIs |
+| **No API** (UI-only access) | PrivateGPT, AnythingLLM, Khoj, LocalGPT expose REST APIs |
 | **Single user** | AnythingLLM, Khoj, Danswer support multi-user |
 | **Smaller LLM** (qwen2:1.5b) | Others can run 7B-70B models with more RAM |
 | **No integrations** | Khoj has Obsidian/Emacs; Danswer has Slack/Drive |
@@ -180,7 +180,7 @@ This analysis compares **Local RAG v2** (what we built) against 8 established op
 | 🔧 Framework to build your own product | **PrivateGPT** |
 | 📊 Complex documents (tables, invoices) | **RAGFlow** |
 | 🎯 Best retrieval accuracy (with 16GB+) | **LocalGPT** |
-| 🧩 Custom AI "Brains" per topic | **Quivr** |
+| 🧩 Embed RAG into your own app | **Quivr** |
 
 ---
 
