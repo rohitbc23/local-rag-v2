@@ -1,6 +1,6 @@
 # Local RAG v2 🔍
 
-A fully local, open-source Retrieval-Augmented Generation (RAG) search engine for your personal documents. No data leaves your machine, no APIs required, and it runs efficiently even on an 8GB RAM machine without a dedicated GPU.
+A fully local, open-source Retrieval-Augmented Generation (RAG) search engine for your personal documents, built with AI assistance, specifically Google Antigravity. No data leaves your machine, no APIs required, and it runs efficiently even on an 8GB RAM machine without a dedicated GPU.
 
 ## Features
 
