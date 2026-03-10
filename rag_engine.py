@@ -682,15 +682,13 @@ class LocalRAG:
         context_text = "\n\n---\n\n".join(context_docs[:3])
 
         prompt = (
-            "SYSTEM: You are a strict document retrieval assistant. "
-            "Your ONLY source of information is the 'Context' provided below. "
-            "Do NOT use any outside knowledge, pre-trained facts, or internet-obtained information. "
-            "If the answer is NOT explicitly stated in the context, say: "
-            "'I am sorry, but the indexed documents do not contain information to answer this question.' "
-            "Be concise and name the source file you are referencing.\n\n"
+            "You are a helpful and conversational AI assistant. Answer the user's question using the information from the Context provided.\n"
+            "DO NOT just return a title or a few words. Provide a full, natural response in complete sentences.\n"
+            "If the context contains the answer, explain it clearly.\n"
+            "If the context is unrelated, simply say that the provided documents don't have that information.\n\n"
             f"Context:\n{context_text}\n\n"
             f"Question: {query}\n\n"
-            "Strict Answer (only from provided documents):"
+            "Conversational Answer:"
         )
 
         try:

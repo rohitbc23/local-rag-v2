@@ -354,11 +354,13 @@ with st.sidebar:
                         "percent": 0,
                         "phase": "starting",
                     }
+                    from streamlit.runtime.scriptrunner import add_script_run_ctx
                     t = threading.Thread(
                         target=_run_indexing_thread,
                         args=(selected, st.session_state["stop_event"]),
                         daemon=True,
                     )
+                    add_script_run_ctx(t)
                     t.start()
                     st.session_state["indexing_thread"] = t
                     st.rerun()
