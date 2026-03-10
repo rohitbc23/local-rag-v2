@@ -28,7 +28,7 @@ This analysis compares **Local RAG v2** (what we built) against 8 established op
 | **Multi-user** | ❌ No | ❌ No | ✅ Yes | ❌ No | ✅ Yes | ✅ Yes (RBAC) | ✅ Yes | ✅ Yes |
 | **API Available** | ❌ No | ✅ FastAPI | ✅ REST API | ❌ No | ✅ REST API | ✅ REST API | ✅ REST API | ✅ REST API |
 | **License** | All Apache/MIT | Apache 2.0 | MIT | Apache 2.0 | AGPL-3.0 | MIT/AGPL | Apache 2.0 | Apache 2.0 |
-| **GitHub Stars** | N/A (custom) | ~19K | ~33K | ~20K | ~17K | ~14K | ~36K | ~30K |
+| **GitHub Stars** | N/A (custom) | ~57K | ~56K | ~22K | ~33K | ~17K | ~39K | ~74K |
 | **Codebase Size** | **~600 lines** | ~15K lines | ~50K+ lines | ~5K lines | ~20K lines | ~100K+ lines | ~30K+ lines | ~50K+ lines |
 
 ---
@@ -119,7 +119,7 @@ This analysis compares **Local RAG v2** (what we built) against 8 established op
 | ✅ Clean, modern React UI | ❌ Complex self-hosting |
 | ✅ 15+ file format support | ❌ 8GB+ RAM needed |
 | ✅ API access for integrations | ❌ Cloud-first design (self-hosting is secondary) |
-| ✅ Active community (~36K stars) | ❌ Frequent breaking changes reported |
+| ✅ Active community (~39K stars) | ❌ Frequent breaking changes reported |
 
 **Best for:** Users wanting a personal ChatGPT-like experience with their own documents.
 
